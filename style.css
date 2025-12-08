@@ -1,0 +1,293 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #fff;
+  color: #333;
+  /* overflow: hidden; */
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 50px;
+  background: #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+  color: #007bff;
+  text-decoration : underline;
+  transition: color 0.3s ease-in-out;
+}
+
+.username {
+  background: #eaf4ff;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #007bff;
+  font-weight: 600;
+}
+
+/* Hero Section */
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80vh; /* Full viewport height minus navbar */
+  padding: 0 80px;
+}
+
+.hero-left {
+  width: 50vw;
+}
+
+.hero-left h1 {
+  font-size: 3vw;
+  line-height: 1.3;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.highlight {
+  color: #007bff;
+}
+
+.hero-left p {
+  font-size: 1.2vw;
+  color: #666;
+  margin-bottom: 25px;
+  line-height: 1.6;
+}
+
+.cta-btn {
+  background: #007bff;
+  color: #fff;
+  border: none;
+  padding: 1vw 2vw;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 1vw;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+
+.cta-btn:hover {
+  background: #0056b3;
+}
+
+.hero-right img {
+  width: 20vw;
+  height: auto;
+}
+
+/* Footer Section */
+footer {
+  background: #007bff;
+  color: black;
+  padding: 20px 80px;
+  width: 100%;
+}
+
+/* Main achievements wrapper */
+footer .achievements {
+  display: flex;
+  flex-direction: row;
+  gap: 100px;
+}
+
+/* Items grid */
+footer .achievement-item {
+  display: flex;
+  gap: 60px;
+}
+
+/* Single achievement box */
+footer .achievement-item .item {
+  text-align: left;
+}
+
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f6f7fb;
+  margin: 0;
+  padding: 20px;
+}
+
+.container {
+  display: flex;
+  gap: 20px;
+}
+
+/* LEFT BOX */
+.services-box {
+  width: 55%;
+  background: #fff;
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  margin-top: 120px;
+  margin-left: 100px;
+  margin-bottom: auto;
+}
+
+.services-box h2 {
+  margin-bottom: 5px;
+}
+
+.sub-title {
+  font-size: 14px;
+  color: #666;
+}
+
+.service-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 0;
+  border-bottom: 1px solid #eee;
+  align-items: center;
+}
+
+.icon {
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+.name {
+  font-weight: 600;
+  margin-right: 10px;
+}
+
+.price {
+  color: #0b74ff;
+  font-weight: 600;
+}
+
+.add-btn{
+  background: #eee;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.add-btn {
+  background: #e7f0ff;
+}
+
+.remove-btn {
+  background: #ffe8e8;
+  color: #ff3a3a;
+}
+
+.footer-link {
+  margin-top: 15px;
+  color: #007bff;
+  font-size: 14px;
+}
+
+
+
+/* RIGHT BOX */
+.cart-box {
+  width: 40%;
+  background: white;
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  margin-top: 120px;
+  margin-bottom: auto;
+}
+#added-items{
+  justify-content: center;
+  text-align: center;
+}
+.cart-box h3 {
+  margin-top: 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+table th, table td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+.total {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  font-weight: bold;
+  border-top: 2px solid #eee;
+}
+
+.book-heading {
+  margin-top: 20px;
+}
+
+.form-box {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-row {
+  display: flex;
+  gap: 20px;
+}
+
+.form-group input {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.book-btn {
+  background: #3a63ff;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+}
+

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laundry Services</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">Logo</div>
+      <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ul>
+      <div class="username">Username</div>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-left">
+      <h1>Revitalize Your<br>Clothes with Expert<br>
+        <span class="highlight">Laundry Services!</span>
+      </h1>
+      <p>
+        From premium dry cleaning to swift wash and fold,<br>
+        we deliver care and convenience.Schedule a pickup <br>
+        and rediscover the freshness of your clothes today!
+      </p>
+      <button class="cta-btn" id="book-service-today">Book a service today!</button>
+    </div>
+    <div class="hero-right">
+      <img src="laundry.png" alt="Laundry Service">
+    </div>
+  </section>
+
+<footer>
+  <div class="achievements">
+    <h1>Our Achievements</h1>
+
+    <div class="achievement-item">
+      <div class="item">
+        <h2>15+</h2>
+        <p>Laundry Services</p>
+      </div>
+
+      <div class="item">
+        <h2>240+</h2>
+        <p>Happy Customers</p>
+      </div>
+
+      <div class="item">
+        <h2>2+ Yrs</h2>
+        <p>Experience</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="container" id="OurServices">
+
+  <!-- LEFT SECTION -->
+  <div class="services-box">
+
+    <h2>Our Services</h2>
+    <p class="sub-title">Click On The Add To Cart Button To Add The Services To Your Cart</p>
+    <br> <br>
+    <hr>
+    <br>
+    <div class="service-item">
+      <div>
+        <span class="icon">🧺</span>
+        <span class="name">Dry Cleaning</span>
+        <span class="price">₹200.00</span>
+      </div>
+      <button class="add-btn" onclick="addItem(this)">Add Item</button>
+    </div>
+
+    <div class="service-item">
+      <div>
+        <span class="icon">🧼</span>
+        <span class="name">Wash & Fold</span>
+        <span class="price">₹100.00</span>
+      </div>
+      <button class="add-btn" onclick="addItem(this)">Add Item</button>
+    </div>
+
+    <div class="service-item">
+      <div>
+        <span class="icon">🧤</span>
+        <span class="name">Ironing</span>
+        <span class="price">₹30.00</span>
+      </div>
+      <button class="add-btn" onclick="addItem(this)">Add Item</button>
+    </div>
+
+    <div class="service-item">
+      <div>
+        <span class="icon">🧽</span>
+        <span class="name">Stain Removal</span>
+        <span class="price">₹500.00</span>
+      </div>
+      <button class="add-btn" onclick="addItem(this)">Add Item</button>
+    </div>
+
+    <div class="service-item">
+      <div>
+        <span class="icon">🧥</span>
+        <span class="name">Leather & Suede Cleaning</span>
+        <span class="price">₹999.00</span>
+      </div>
+      <button class="add-btn" onclick="addItem(this)">Add Item</button>
+    </div>
+
+    <div class="service-item">
+      <div>
+        <span class="icon">👗</span>
+        <span class="name">Wedding Dress Cleaning</span>
+        <span class="price">₹2800.00</span>
+      </div>
+      <button class="add-btn" onclick="addItem(this)">Add Item</button>
+    </div>
+
+    <p class="footer-link">➕ Add the items to the cart and book now</p>
+  </div>
+
+
+
+  <!-- RIGHT SECTION -->
+  <div class="cart-box" id="added-item">
+    
+    <h3 class="added-item" id="added-items">Added Items</h3>
+    <br>
+
+    <table>
+      <tr>
+        <th>S.No</th>
+        <th>Service Name</th>
+        <th>Price</th>
+      </tr>
+      
+      <tr>
+        <td>1</td>
+        <td>Dry Cleaning</td>
+        <td>₹200.00</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Ironing</td>
+        <td>₹30.00</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Leather & Suede Cleaning</td>
+        <td>₹999.00</td>
+      </tr>
+    </table>
+
+    <div class="total">
+      <p>Total Amount</p>
+      <h3>₹0.00</h3>
+    </div>
+  </div>
+
+  <div class="cart-box" id="book-now">
+      <h3 class="book-heading">Book Now</h3>
+      <br>
+
+    <form class="form-box">
+
+  <div class="form-group">
+    <label>Full Name</label>
+    <input type="text" placeholder="John Doe">
+  </div>
+
+  <div class="form-row">
+
+    <div class="form-group">
+      <label>Email ID</label>
+      <input type="email" placeholder="mailid@gmail.com">
+    </div>
+
+    <div class="form-group">
+      <label>Phone Number</label>
+      <input type="text" placeholder="0000000000">
+    </div>
+
+  </div>
+
+  <button class="book-btn">Book now</button>
+</form>
+
+  </div>
+</div>
+
+<script src="email.js"></script>
+</body>
+</html>
