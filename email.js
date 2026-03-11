@@ -1,8 +1,6 @@
-
 const EMAILJS_PUBLIC_KEY = "2pQBfNq9VLrkU97sO"; 
 const EMAILJS_SERVICE_ID = "service_zq1q0lq"; 
 const EMAILJS_TEMPLATE_ID = "template_nfcjilg"; 
-
 
 function loadEmailJS(callback) {
     const script = document.createElement("script");
@@ -16,50 +14,90 @@ loadEmailJS(() => {
     console.log("EmailJS Loaded Successfully");
 });
 
-document.getElementById("book-service-today").addEventListener("click", function() {
+document.getElementById("book-service-today")?.addEventListener("click", function() {
   document.getElementById("OurServices").scrollIntoView({ behavior: 'smooth' });
 });
 
 const cartItems = [];
 
 function addItem(button) {
+
   const serviceDiv = button.parentElement;
   const serviceName = serviceDiv.querySelector(".name").textContent;
   const priceText = serviceDiv.querySelector(".price").textContent;
   const price = parseFloat(priceText.replace(/[^\d.]/g, ""));
 
-  if (cartItems.find(item => item.name === serviceName)) {
-    alert(serviceName + " is already added.");
-    return;
+  const existing = cartItems.find(item => item.name === serviceName);
+
+  if (existing) {
+
+    /* REMOVE ITEM */
+
+    const index = cartItems.indexOf(existing);
+    cartItems.splice(index,1);
+
+    button.textContent = "Add Item";
+    button.classList.remove("remove-btn");
+
+  } else {
+
+    /* ADD ITEM */
+
+    cartItems.push({ name: serviceName, price: price });
+
+    button.textContent = "Remove Item";
+    button.classList.add("remove-btn");
+
   }
 
-  cartItems.push({ name: serviceName, price: price });
   updateCartTable();
 }
 
 function updateCartTable() {
-  const table = document.querySelector("#added-item table");
 
-  while (table.rows.length > 1) {
-    table.deleteRow(1);
-  }
+  const tbody = document.querySelector("#added-item tbody");
+  tbody.innerHTML = "";
 
   let total = 0;
 
-  cartItems.forEach((item, index) => {
-    const row = table.insertRow(-1);
+  if(cartItems.length === 0){
 
-    row.insertCell(0).textContent = index + 1;
-    row.insertCell(1).textContent = item.name;
-    row.insertCell(2).textContent = `₹${item.price.toFixed(2)}`;
+    tbody.innerHTML = `
+      <tr>
+        <td colspan="3" style="text-align:center;color:#999">
+          No items added
+        </td>
+      </tr>
+    `;
 
-    total += item.price;
-  });
+  }else{
 
-  document.querySelector("#added-item .total h3").textContent = `₹${total.toFixed(2)}`;
+    cartItems.forEach((item, index) => {
+
+      const row = document.createElement("tr");
+
+      row.innerHTML = `
+        <td>${index+1}</td>
+        <td>${item.name}</td>
+        <td>₹${item.price.toFixed(2)}</td>
+      `;
+
+      tbody.appendChild(row);
+
+      total += item.price;
+
+    });
+
+  }
+
+  document.querySelector("#added-item .total h3").textContent =
+    `₹${total.toFixed(2)}`;
+
+  const bookBtn = document.querySelector(".book-btn");
+
+  bookBtn.disabled = cartItems.length === 0;
+
 }
-
-
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -67,7 +105,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const confirmationMessage = document.getElementById("confirmation-message");
     const bookBtn = document.querySelector(".book-btn");
 
+    bookBtn.disabled = true;
+
     function validateForm() {
+
         const fullName = form.querySelector("input[placeholder='John Doe']").value.trim();
         const email = form.querySelector("input[placeholder='mailid@gmail.com']").value.trim();
         const phone = form.querySelector("input[placeholder='0000000000']").value.trim();
@@ -81,6 +122,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     form.addEventListener("submit", function(e) {
+
         e.preventDefault();
 
         if (!validateForm()) return;
@@ -93,26 +135,46 @@ document.addEventListener("DOMContentLoaded", () => {
         const phone = form.querySelector("input[placeholder='0000000000']").value;
 
         const params = {
+
             full_name: fullName,
             email: email,
             phone: phone,
-            services: cartItems.map(i => `<li>${i.name} — ₹${i.price}</li>`).join(""),
-            total_price: cartItems.reduce((sum, item) => sum + item.price, 0)
+
+            services: cartItems
+            .map(i => `${i.name} - ₹${i.price}`)
+            .join(", "),
+
+            total_price: cartItems
+            .reduce((sum,item)=>sum+item.price,0)
+
         };
 
         emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, params)
+
         .then(() => {
+
             confirmationMessage.style.display = "block";
+
             form.reset();
+
             clearCart();
+
         })
+
         .catch(err => {
+
             alert("Email sending failed.");
+
             console.error("Error:", err);
+
         })
+
         .finally(() => {
+
             bookBtn.disabled = false;
+
             bookBtn.textContent = "Book now";
+
         });
 
     });
@@ -120,22 +182,25 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function clearCart() {
+
     cartItems.length = 0;
 
-    const table = document.querySelector("#added-item table");
-    while (table.rows.length > 1) table.deleteRow(1);
+    const tbody = document.querySelector("#added-item tbody");
+
+    tbody.innerHTML = `
+      <tr>
+        <td colspan="3" style="text-align:center;color:#999">
+          No items added
+        </td>
+      </tr>
+    `;
 
     document.querySelector("#added-item .total h3").textContent = "₹0.00";
+
+    document.querySelectorAll(".add-btn").forEach(btn=>{
+        btn.textContent="Add Item";
+        btn.classList.remove("remove-btn");
+    });
+
 }
 
-
-sendEmail({
-  to: user.email,
-  template: "order-confirmation",
-  data: {
-    orderId: order.id,
-    shipping: order.shipping,
-    Handling_Cost: order.Handling_Cost,
-    total: order.total
-  }
-});

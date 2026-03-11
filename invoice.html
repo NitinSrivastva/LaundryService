@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Invoice</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<style>
+  body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background:#f5f5f5; padding:20px; }
+  .invoice { max-width:600px; margin:auto; background:#fff; padding:20px; border-radius:16px; box-shadow:0 8px 24px rgba(0,0,0,0.1); }
+  .invoice h1 { color:#3f51b5; }
+  .invoice table { width:100%; border-collapse:collapse; margin-top:20px; }
+  .invoice table td { padding:8px; border-bottom:1px solid #eee; }
+  .total { text-align:right; font-size:20px; margin-top:20px; }
+  .download-btn { display:inline-block; margin-top:20px; padding:10px 20px; background:#4CAF50; color:#fff; border-radius:5px; text-decoration:none; font-weight:bold; 
+  }
+</style>
+</head>
+<body>
+
+<div class="invoice" id="invoice">
+  <h1>Booking Invoice</h1>
+  <p id="customer-info"></p>
+  <h3>Services</h3>
+  <ul id="services-list"></ul>
+  <p class="total">Total: ₹<span id="total-price"></span></p>
+</div>
+
+<a href="#" class="download-btn" id="download-pdf">Download PDF</a>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  // Get booking_id from URL
+  const urlParams = new URLSearchParams(window.location.search);
+  const booking_id = urlParams.get("booking_id");
+
+  if (!booking_id) {
+    alert("No booking ID found!");
+    return;
+  }
+
+  // Retrieve data from localStorage
+  const data = JSON.parse(localStorage.getItem(booking_id));
+  if (!data) {
+    alert("Invoice data not found in localStorage!");
+    return;
+  }
+
+  // Fill invoice
+  document.getElementById("customer-info").innerHTML =
+    `<strong>Name:</strong> ${data.full_name}<br>
+     <strong>Email:</strong> ${data.email}<br>
+     <strong>Phone:</strong> ${data.phone}`;
+
+  document.getElementById("services-list").innerHTML = data.services;
+  document.getElementById("total-price").textContent = data.total_price;
+
+  // Download PDF
+  document.getElementById("download-pdf").addEventListener("click", function() {
+    html2canvas(document.getElementById("invoice")).then(canvas => {
+      const imgData = canvas.toDataURL('image/png');
+      const pdf = new jspdf.jsPDF();
+      const imgProps = pdf.getImageProperties(imgData);
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+      pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+      pdf.save(`Invoice-${booking_id}.pdf`);
+    });
+  });
+});
+</script>
+
+</body>
+</html>

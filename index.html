@@ -1,77 +1,80 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Laundry Services</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <!-- Navbar -->
-  <header>
-    <nav class="navbar">
-      <div class="logo">Logo</div>
-      <ul class="nav-links">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Services</a></li>
-        <li><a href="#">About Us</a></li>
-        <li><a href="#">Contact Us</a></li>
-      </ul>
-      <div class="username">Username</div>
-    </nav>
-  </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Laundry Services</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  </head>
+  <body>
+    <!-- Navbar -->
+    <header>
+      <nav class="navbar">
+        <div class="logo">Logo</div>
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#OurServices">Services</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+        </ul>
+        <div class="username">Username</div>
+      </nav>
+    </header>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-left">
-      <h1>Revitalize Your<br>Clothes with Expert<br>
-        <span class="highlight">Laundry Services!</span>
-      </h1>
-      <p>
-        From premium dry cleaning to swift wash and fold,<br>
-        we deliver care and convenience.Schedule a pickup <br>
-        and rediscover the freshness of your clothes today!
-      </p>
-      <button class="cta-btn" id="book-service-today">Book a service today!</button>
-    </div>
-    <div class="hero-right">
-      <img src="laundry.png" alt="Laundry Service">
-    </div>
-  </section>
-
-<footer>
-  <div class="achievements">
-    <h1>Our Achievements</h1>
-
-    <div class="achievement-item">
-      <div class="item">
-        <h2>15+</h2>
-        <p>Laundry Services</p>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="hero-left">
+        <h1>
+          Revitalize Your<br />Clothes with Expert<br />
+          <span class="highlight">Laundry Services!</span>
+        </h1>
+        <p>
+          From premium dry cleaning to swift wash and fold,<br />
+          we deliver care and convenience.Schedule a pickup <br />
+          and rediscover the freshness of your clothes today!
+        </p>
+        <button class="cta-btn" id="book-service-today">
+          Book a service today!
+        </button>
       </div>
-
-      <div class="item">
-        <h2>240+</h2>
-        <p>Happy Customers</p>
+      <div class="hero-right">
+        <img src="Laundry img.png" alt="Laundry Service" />
       </div>
+    </section>
 
-      <div class="item">
-        <h2>2+ Yrs</h2>
-        <p>Experience</p>
+    <section id="service">
+      <div class="achievements">
+        <h1>Our Achievements</h1>
+
+        <div class="achievement-item">
+          <div class="item">
+            <h2>15+</h2>
+            <p>Laundry Services</p>
+          </div>
+
+          <div class="item">
+            <h2>240+</h2>
+            <p>Happy Customers</p>
+          </div>
+
+          <div class="item">
+            <h2>2+ Yrs</h2>
+            <p>Experience</p>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</footer>
-
-<div class="container" id="OurServices">
-
-  <!-- LEFT SECTION -->
+    </section>
+    
+    <div class="container" id="OurServices">
   <div class="services-box">
-
     <h2>Our Services</h2>
-    <p class="sub-title">Click On The Add To Cart Button To Add The Services To Your Cart</p>
-    <br> <br>
-    <hr>
-    <br>
+    <p class="sub-title">
+      Click On The Add To Cart Button To Add The Services To Your Cart
+    </p>
+
+    <hr class="service-divider">
+
     <div class="service-item">
       <div>
         <span class="icon">🧺</span>
@@ -129,80 +132,178 @@
     <p class="footer-link">➕ Add the items to the cart and book now</p>
   </div>
 
-
-
-  <!-- RIGHT SECTION -->
+  <!-- CART -->
   <div class="cart-box" id="added-item">
-    
-    <h3 class="added-item" id="added-items">Added Items</h3>
-    <br>
+
+    <h3 class="added-item">Added Items</h3>
 
     <table>
-      <tr>
-        <th>S.No</th>
-        <th>Service Name</th>
-        <th>Price</th>
-      </tr>
-      
-      <tr>
-        <td>1</td>
-        <td>Dry Cleaning</td>
-        <td>₹200.00</td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>Ironing</td>
-        <td>₹30.00</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>Leather & Suede Cleaning</td>
-        <td>₹999.00</td>
-      </tr>
+      <thead>
+        <tr>
+          <th>S.No</th>
+          <th>Service Name</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+
+      <tbody id="cart-body">
+        <tr id="no-item-row">
+          <td colspan="3" style="text-align:center;color:#999;">
+            No items added
+          </td>
+        </tr>
+      </tbody>
+
     </table>
 
     <div class="total">
       <p>Total Amount</p>
-      <h3>₹0.00</h3>
+      <h3 id="total-price">₹0.00</h3>
     </div>
+
   </div>
 
+  <!-- BOOK -->
   <div class="cart-box" id="book-now">
-      <h3 class="book-heading">Book Now</h3>
-      <br>
+
+    <h3 class="book-heading">Book Now</h3>
 
     <form class="form-box">
 
-  <div class="form-group">
-    <label>Full Name</label>
-    <input type="text" placeholder="John Doe">
-  </div>
+      <div class="form-group">
+        <label>Full Name</label>
+        <input type="text" placeholder="John Doe" class="inputs">
+      </div>
 
-  <div class="form-row">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Email ID</label>
+          <input type="email" placeholder="mailid@gmail.com" class="inputs">
+        </div>
 
-    <div class="form-group">
-      <label>Email ID</label>
-      <input type="email" placeholder="mailid@gmail.com">
-    </div>
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="text" placeholder="0000000000" class="inputs">
+        </div>
+      </div>
 
-    <div class="form-group">
-      <label>Phone Number</label>
-      <input type="text" placeholder="0000000000">
-    </div>
+      <p id="confirmation-message" style="display:none;color:green;margin-top:12px;">
+        Thank you For Booking the Service! We will get back to you soon!
+      </p>
 
-  </div>
+      <button type="submit" class="book-btn" disabled>
+        Book now
+      </button>
 
-  <!-- ✅ INSERTED SUCCESS MESSAGE (DO NOT EDIT) -->
-  <p id="confirmation-message" style="display:none; color:green; margin-top: 12px;">
-      Thank you For Booking the Service! We will get back to you soon!
-  </p>
-
-  <button class="book-btn">Book now</button>
-</form>
+    </form>
 
   </div>
 </div>
 
-<script src="email.js"></script>
-</body>
+    <section class="section-feature" id="about">
+  <div class="row">
+    <div class="col span_1_of_4 box">
+      <i class="fa-solid fa-jug-detergent feature-icon"></i>
+      <h3>Premium Services</h3>
+      <p>
+        Elevate your wardrobe with our <br />
+        meticulous dry cleaning,<br />
+        ensuring garments look and feel <br />
+        as good as new.
+      </p>
+    </div>
+
+    <div class="col span_1_of_4 box">
+      <i class="fa-solid fa-headset feature-icon"></i>
+      <h3>Quick Support</h3>
+      <p>
+        We're committed to providing <br />
+        prompt solutions to ensure your <br />
+        experience is smooth and <br />
+        worry-free.
+      </p>
+    </div>
+
+    <div class="col span_1_of_4 box">
+      <i class="fa-solid fa-box-open feature-icon"></i>
+      <h3>Hassle Free Delivery</h3>
+      <p>
+        Enjoy seamless service with our <br />
+        convenient pickup and delivery <br />
+        options, tailored to your <br />
+        schedule.
+      </p>
+    </div>
+
+    <div class="col span_1_of_4 box">
+      <i class="fa-solid fa-hand-holding-dollar feature-icon"></i>
+      <h3>Affordable Prices</h3>
+      <p>
+        Experience exceptional care <br />
+        without breaking the bank - our <br />
+        affordable prices make laundry <br />
+        day stress-free.
+      </p>
+    </div>
+  </div>
+</section>
+
+    <section class="newsletter-section" id="contact">
+      <div class="newsletter-container">
+        <h2 class="newsletter-heading">
+          Subscribe to our <br />
+          newsletter.
+        </h2>
+        <form class="newsletter-form">
+          <input type="text" placeholder="Full name" id="name" class="newsletter-input" required />
+          <input type="email" placeholder="Email" id="email" class="newsletter-input" required />
+          <button type="submit" id="subscribe-btn">Subscribe</button>
+        </form>
+      </div>
+    </section>
+    
+    <section class="footer">
+      <div class="footer-container">
+        <div class="footer-col">
+          <h2 class="footer-logo">Logo</h2>
+          <h5 class="footer-about-title">About us</h5>
+          <p class="footer-text">
+            Lorem Ipsum Dolor Sit Amet <br>
+            Consectetur. Sed At Congue.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-title">Important Links</h4>
+          <ul class="footer-links">
+            <li><a href="#about">About us</a></li>
+            <li><a href="#contact">Contact us</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of use</a></li>
+            <li><a href="#">Refund Policy</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-title">Contact</h4>
+          <p class="footer-text">
+            mail@site.com <br />
+            +91 91234 56780
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-title">Follow Us</h4>
+          <div class="social-icons">
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="email.js"></script>
+  </body>
 </html>
